@@ -3,66 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rohit Dhanani - Web Developer Portfolio</title>
-    <!-- Tailwind CSS CDN for modern styling and responsiveness -->
+    <title>Rohit Dhanani - Elite Web Development Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts - Inter for a clean, professional look -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <!-- Three.js CDN for the subtle background animation -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <style>
-        /* Custom CSS for base styles and animations */
+        /* Custom CSS for base styles, animations, and refined aesthetics */
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0d1117; /* Dark background */
-            color: #c9d1d9; /* Light text */
+            font-family: 'Lato', sans-serif;
+            background-color: #0A0A0C; /* Deep, almost black charcoal */
+            color: #E0E0E0; /* Soft white text */
             line-height: 1.6;
             overflow-x: hidden; /* Prevent horizontal scroll */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        /* Smooth scroll behavior */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            color: #F0F0F0; /* Brighter white for headings */
+        }
+
         html {
             scroll-behavior: smooth;
         }
 
         /* Section padding */
         section {
-            padding: 80px 0;
+            padding: 100px 0; /* More generous vertical padding */
+            position: relative; /* For z-index stacking if needed */
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: rgba(10, 10, 12, 0.95); /* Deeper background with slight transparency */
+            border-bottom: 1px solid rgba(40, 40, 45, 0.5); /* Subtle bottom border */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease-in-out;
+            font-weight: 600;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px; /* Thicker underline */
+            bottom: -8px; /* Lower underline */
+            left: 50%; /* Center start */
+            transform: translateX(-50%);
+            background-color: #6A32F9; /* Vibrant primary accent color */
+            border-radius: 2px;
+            transition: width 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
         }
 
         /* Hero section specific styles */
         #hero {
-            position: relative;
             height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden; /* Hide overflow from particles */
-            background: linear-gradient(135deg, #1a202c, #0d1117); /* Subtle gradient */
+            background: linear-gradient(135deg, #101015, #0A0A0C); /* Subtle dark gradient */
         }
 
-        /* Canvas for Three.js particles */
         #hero-canvas {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 0; /* Behind content */
+            z-index: 0;
+            opacity: 0.6; /* Slightly more subtle particles */
         }
 
-        /* Content over particles */
         #hero-content {
             position: relative;
             z-index: 1;
             text-align: center;
-            opacity: 0; /* Initial state for animation */
-            transform: translateY(20px); /* Initial state for animation */
-            animation: fadeInSlideUp 1s ease-out forwards;
-            animation-delay: 0.5s;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInSlideUp 1.2s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+            animation-delay: 0.8s; /* Longer delay for dramatic entrance */
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Text shadow for pop */
         }
 
-        /* Keyframe animation for hero content */
         @keyframes fadeInSlideUp {
             to {
                 opacity: 1;
@@ -73,8 +102,8 @@
         /* General section reveal animation */
         .section-hidden {
             opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            transform: translateY(70px); /* More pronounced slide up */
+            transition: opacity 1s cubic-bezier(0.23, 1, 0.32, 1), transform 1s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
         .section-visible {
@@ -82,293 +111,367 @@
             transform: translateY(0);
         }
 
-        /* Button styles */
+        /* Buttons */
         .btn {
-            display: inline-block;
-            padding: 12px 28px;
-            border-radius: 9999px; /* Fully rounded */
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+            padding: 14px 32px;
+            border-radius: 9999px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+            transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px; /* Space between text and icon */
         }
 
         .btn-primary {
-            background-color: #4a90e2; /* Blue */
+            background: linear-gradient(90deg, #6A32F9 0%, #8C52FF 100%); /* Gradient background */
             color: #ffffff;
+            border: none;
         }
 
         .btn-primary:hover {
-            background-color: #357ABD;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(106, 50, 249, 0.4);
+            filter: brightness(1.1); /* Slightly brighter on hover */
         }
 
         .btn-secondary {
-            background-color: #2d3748; /* Darker gray */
-            color: #a0aec0;
-            border: 1px solid #4a5568;
+            background-color: transparent;
+            color: #B0B0B0;
+            border: 2px solid #404045;
         }
 
         .btn-secondary:hover {
-            background-color: #4a5568;
+            background-color: #202025;
             color: #ffffff;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            border-color: #6A32F9; /* Accent border on hover */
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
         }
 
-        /* Navigation link hover effect */
-        .nav-link {
-            position: relative;
-            transition: color 0.3s ease;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: #4a90e2;
-            transition: width 0.3s ease-out;
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        /* Card styles for skills/projects */
+        /* Cards */
         .card {
-            background-color: #161b22; /* Slightly lighter dark */
-            border-radius: 12px;
-            padding: 24px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid #2f363d;
+            background-color: #1A1A1E; /* Slightly lighter than body for contrast */
+            border-radius: 20px; /* More rounded corners */
+            padding: 40px; /* More padding */
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+            transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.4s cubic-bezier(0.23, 1, 0.32, 1), border-color 0.4s ease-in-out;
+            border: 1px solid #28282D; /* Subtle border */
+            overflow: hidden;
+            position: relative;
         }
 
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+            transform: translateY(-10px); /* More pronounced lift */
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+            border-color: #6A32F9; /* Highlight border on hover */
         }
 
-        /* Input field styles */
+        .card-icon {
+            transition: transform 0.4s ease-in-out;
+            font-size: 5rem; /* Larger icons */
+            margin-bottom: 24px;
+        }
+
+        .card:hover .card-icon {
+            transform: scale(1.15) rotate(5deg); /* More dynamic icon animation */
+        }
+
+        /* Input Fields */
         .input-field {
             width: 100%;
-            padding: 12px;
-            background-color: #161b22;
-            border: 1px solid #4a5568;
-            border-radius: 8px;
-            color: #c9d1d9;
-            transition: border-color 0.3s ease;
+            padding: 16px 24px;
+            background-color: #1A1A1E;
+            border: 2px solid #404045;
+            border-radius: 12px;
+            color: #E0E0E0;
+            transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
         }
 
         .input-field:focus {
             outline: none;
-            border-color: #4a90e2;
-            box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.25);
+            border-color: #6A32F9;
+            box-shadow: 0 0 0 5px rgba(106, 50, 249, 0.3); /* Vibrant focus ring */
         }
 
-        /* Responsive adjustments */
+        textarea.input-field {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Section Title Styling */
+        .section-title {
+            font-size: 3.5rem; /* Larger main headings */
+            font-weight: 800;
+            margin-bottom: 24px;
+            background: linear-gradient(45deg, #6A32F9, #8C52FF); /* Gradient for headings */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-subtitle {
+            font-size: 1.6rem;
+            color: #B0B0B0;
+            margin-bottom: 60px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Responsive Adjustments */
         @media (max-width: 768px) {
-            .flex-col-mobile {
-                flex-direction: column;
+            .section-title {
+                font-size: 2.5rem;
             }
-            .text-center-mobile {
-                text-align: center;
+            .section-subtitle {
+                font-size: 1.2rem;
             }
-            .mt-4-mobile {
-                margin-top: 1rem;
+            #hero-content h1 {
+                font-size: 3.2rem;
             }
-            .space-y-6-mobile > *:not(:first-child) {
-                margin-top: 1.5rem;
+            #hero-content p {
+                font-size: 1.3rem;
+            }
+            .btn {
+                padding: 12px 24px;
+                font-size: 0.9rem;
+            }
+            .card {
+                padding: 30px;
+            }
+            .card-icon {
+                font-size: 4rem;
             }
         }
     </style>
 </head>
 <body class="antialiased">
 
-    <!-- Header & Navigation -->
-    <header class="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-gray-900 to-gray-800 bg-opacity-90 backdrop-blur-sm shadow-lg">
-        <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
-            <a href="#" class="text-2xl font-bold text-white hover:text-blue-400 transition-colors duration-300">Rohit.dev</a>
-            <div class="hidden md:flex space-x-8">
+    <header class="fixed top-0 left-0 w-full z-50 py-4">
+        <nav class="container mx-auto px-6 flex items-center justify-between">
+            <a href="#" class="text-3xl font-extrabold text-white hover:text-indigo-400 transition-colors duration-300">Rohit.<span class="text-purple-500">dev</span></a>
+            <div class="hidden md:flex space-x-10">
                 <a href="#about" class="nav-link text-gray-300 hover:text-white text-lg">About</a>
                 <a href="#skills" class="nav-link text-gray-300 hover:text-white text-lg">Skills</a>
                 <a href="#projects" class="nav-link text-gray-300 hover:text-white text-lg">Projects</a>
                 <a href="#contact" class="nav-link text-gray-300 hover:text-white text-lg">Contact</a>
             </div>
-            <!-- Mobile Menu Button (Hamburger) -->
-            <button id="mobile-menu-button" class="md:hidden text-gray-300 hover:text-white focus:outline-none">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <button id="mobile-menu-button" class="md:hidden text-gray-300 hover:text-white focus:outline-none z-50">
+                <svg class="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
                 </svg>
             </button>
         </nav>
-        <!-- Mobile Menu (Hidden by default) -->
-        <div id="mobile-menu" class="hidden md:hidden bg-gray-800 bg-opacity-95 py-4">
-            <a href="#about" class="block px-6 py-2 text-gray-300 hover:bg-gray-700 hover:text-white text-lg">About</a>
-            <a href="#skills" class="block px-6 py-2 text-gray-300 hover:bg-gray-700 hover:text-white text-lg">Skills</a>
-            <a href="#projects" class="block px-6 py-2 text-gray-300 hover:bg-gray-700 hover:text-white text-lg">Projects</a>
-            <a href="#contact" class="block px-6 py-2 text-gray-300 hover:bg-gray-700 hover:text-white text-lg">Contact</a>
+        <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-gray-900 bg-opacity-95 backdrop-blur-md flex flex-col items-center justify-center space-y-8 text-xl transform translate-x-full transition-transform duration-500 ease-in-out">
+            <button id="close-mobile-menu" class="absolute top-6 right-6 text-gray-300 hover:text-white focus:outline-none">
+                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <a href="#about" class="block text-gray-200 hover:text-purple-400 transition-colors duration-300 text-3xl font-bold">About</a>
+            <a href="#skills" class="block text-gray-200 hover:text-purple-400 transition-colors duration-300 text-3xl font-bold">Skills</a>
+            <a href="#projects" class="block text-gray-200 hover:text-purple-400 transition-colors duration-300 text-3xl font-bold">Projects</a>
+            <a href="#contact" class="block text-gray-200 hover:text-purple-400 transition-colors duration-300 text-3xl font-bold">Contact</a>
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section id="hero" class="relative text-white">
         <canvas id="hero-canvas"></canvas>
-        <div id="hero-content" class="relative z-10 max-w-4xl mx-auto px-6">
-            <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-4 drop-shadow-lg">
-                Hi, I'm <span class="text-blue-400">Rohit Dhanani</span>
+        <div id="hero-content" class="relative z-10 max-w-5xl mx-auto px-6">
+            <p class="text-2xl md:text-3xl text-purple-300 mb-4 font-semibold animate-pulse">Greetings, I am</p>
+            <h1 class="text-6xl md:text-8xl font-extrabold leading-tight mb-6 drop-shadow-lg">
+                <span class="text-white">Rohit Dhanani</span>
             </h1>
-            <p class="text-2xl md:text-3xl text-gray-300 mb-8 font-light">
-                A passionate Web Developer & Student, crafting digital experiences.
+            <p class="text-2xl md:text-4xl text-gray-300 mb-10 font-light max-w-3xl mx-auto">
+                A <b>passionate and innovative Web Developer & Student</b>, dedicated to crafting <span class="text-purple-300 font-medium">exceptional digital experiences</span>.
             </p>
-            <div class="space-x-4">
-                <a href="#projects" class="btn btn-primary">View My Work</a>
-                <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+            <div class="flex flex-col sm:flex-row justify-center space-y-5 sm:space-y-0 sm:space-x-8">
+                <a href="#projects" class="btn btn-primary">Explore My Work <i class="fas fa-arrow-right"></i></a>
+                <a href="#contact" class="btn btn-secondary">Let's Connect <i class="fas fa-handshake"></i></a>
             </div>
         </div>
     </section>
 
-    <!-- About Me Section -->
-    <section id="about" class="container mx-auto px-6 py-16 text-center section-hidden">
-        <h2 class="text-4xl font-bold mb-8 text-blue-400">About Me</h2>
-        <div class="max-w-3xl mx-auto bg-gray-800 card p-8">
-            <p class="text-lg mb-4">
-                Hello! I'm Rohit Dhanani, a 16-year-old web developer currently studying in school. I'm passionate about building beautiful and functional websites, always eager to learn new technologies and improve my craft.
+    ---
+
+    <section id="about" class="container mx-auto px-6 section-hidden">
+        <h2 class="section-title text-center">About My Journey</h2>
+        <p class="section-subtitle text-center">Discover the passion and drive behind my digital creations.</p>
+        <div class="max-w-4xl mx-auto bg-gray-800 card p-10 md:p-14">
+            <p class="text-lg mb-6 text-gray-300 leading-relaxed">
+                Hello! I'm <b>Rohit Dhanani</b>, a 16-year-old <b>front-end web developer</b> currently balancing my academic pursuits with an insatiable drive for web creation. My journey into development began out of sheer curiosity for how websites come to life, quickly evolving into a profound passion for **designing and building user-centric interfaces**. I am relentlessly curious, always learning, and constantly seeking new challenges to enhance my technical repertoire.
             </p>
-            <p class="text-lg mb-4">
-                My journey into web development started with a curiosity for how things work on the internet, and it quickly grew into a passion for creating them myself. I enjoy bringing ideas to life through code and solving challenging problems.
+            <p class="text-lg mb-6 text-gray-300 leading-relaxed">
+                I thrive on transforming complex problems into elegant, intuitive solutions through code. Whether it's **pixel-perfect layouts, seamless animations, or robust functionality**, I enjoy every step of bringing a concept from ideation to a fully realized digital product. My commitment to clean, efficient, and maintainable code ensures not just beautiful aesthetics, but also high performance and scalability.
             </p>
-            <div class="mt-8 text-left inline-block">
-                <p class="text-lg mb-2"><strong class="text-blue-300">Name:</strong> Rohit Dhanani</p>
-                <p class="text-lg mb-2"><strong class="text-blue-300">Age:</strong> 16 years</p>
-                <p class="text-lg mb-2"><strong class="text-blue-300">Birth Date:</strong> 19 / 10 / 2009</p>
-                <p class="text-lg mb-2"><strong class="text-blue-300">Contact:</strong> +91 9084589707</p>
+            <div class="mt-10 text-left bg-gray-900 p-8 rounded-xl shadow-inner border border-gray-700">
+                <h3 class="text-2xl font-bold mb-6 text-purple-300">Quick Facts:</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-8 text-lg text-gray-300">
+                    <p><strong class="text-purple-200"><i class="fas fa-user-tie mr-3 w-5 text-center"></i>Name:</strong> Rohit Dhanani</p>
+                    <p><strong class="text-purple-200"><i class="fas fa-birthday-cake mr-3 w-5 text-center"></i>Age:</strong> 16 years</p>
+                    <p><strong class="text-purple-200"><i class="fas fa-calendar-alt mr-3 w-5 text-center"></i>Birth Date:</strong> October 19, 2009</p>
+                    <p><strong class="text-purple-200"><i class="fas fa-phone-alt mr-3 w-5 text-center"></i>Contact:</strong> +91 9084589707</p>
+                    <p class="md:col-span-2"><strong class="text-purple-200"><i class="fas fa-graduation-cap mr-3 w-5 text-center"></i>Status:</strong> Student & Aspiring Web Developer</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="container mx-auto px-6 py-16 text-center section-hidden">
-        <h2 class="text-4xl font-bold mb-8 text-blue-400">My Skills</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Skill Card 1: HTML -->
+    ---
+
+    <section id="skills" class="container mx-auto px-6 section-hidden">
+        <h2 class="section-title text-center">My Technical Arsenal</h2>
+        <p class="section-subtitle text-center">A glimpse into the tools and technologies I wield to build the web.</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
             <div class="card flex flex-col items-center">
-                <svg class="w-16 h-16 mb-4 text-orange-500" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M5 3h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2zm1.75 13.5L6 11.25l-.75-3.75h13.5l-.75 3.75L17.25 16.5H6.75zM12 7.5L13.5 15h-3L12 7.5z"/>
-                    <path fill-rule="evenodd" d="M12 7.5L13.5 15h-3L12 7.5zM6.75 16.5L6 11.25l-.75-3.75h13.5l-.75 3.75L17.25 16.5H6.75z" clip-rule="evenodd"/>
-                </svg>
-                <h3 class="text-2xl font-semibold mb-2">HTML5</h3>
-                <p class="text-gray-400 text-center">Strong foundation in semantic and accessible HTML structures.</p>
-            </div>
-            <!-- Skill Card 2: CSS -->
-            <div class="card flex flex-col items-center">
-                <svg class="w-16 h-16 mb-4 text-blue-500" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M5 3h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2zm1.75 13.5L6 11.25l-.75-3.75h13.5l-.75 3.75L17.25 16.5H6.75zM12 7.5L13.5 15h-3L12 7.5z"/>
-                    <path fill-rule="evenodd" d="M12 7.5L13.5 15h-3L12 7.5zM6.75 16.5L6 11.25l-.75-3.75h13.5l-.75 3.75L17.25 16.5H6.75z" clip-rule="evenodd"/>
-                </svg>
-                <h3 class="text-2xl font-semibold mb-2">CSS3 & Tailwind CSS</h3>
-                <p class="text-gray-400 text-center">Proficient in modern CSS, responsive design, and utility-first frameworks.</p>
-            </div>
-            <!-- Skill Card 3: JavaScript -->
-            <div class="card flex flex-col items-center">
-                <svg class="w-16 h-16 mb-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M5 3h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2zm1.75 13.5L6 11.25l-.75-3.75h13.5l-.75 3.75L17.25 16.5H6.75zM12 7.5L13.5 15h-3L12 7.5z"/>
-                    <path fill-rule="evenodd" d="M12 7.5L13.5 15h-3L12 7.5zM6.75 16.5L6 11.25l-.75-3.75h13.5l-.75 3.75L17.25 16.5H6.75z" clip-rule="evenodd"/>
-                </svg>
-                <h3 class="text-2xl font-semibold mb-2">JavaScript</h3>
-                <p class="text-gray-400 text-center">Interactive web experiences, DOM manipulation, and basic animations.</p>
-            </div>
-            <!-- Add more skill cards as needed -->
-            <div class="card flex flex-col items-center">
-                <svg class="w-16 h-16 mb-4 text-purple-400" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
-                </svg>
-                <h3 class="text-2xl font-semibold mb-2">Problem Solving</h3>
-                <p class="text-gray-400 text-center">A keen eye for detail and a systematic approach to debugging and problem-solving.</p>
+                <i class="fab fa-html5 text-orange-500 card-icon"></i>
+                <h3 class="text-3xl font-semibold mb-3">HTML5</h3>
+                <p class="text-gray-400 text-center text-md">Mastery of semantic markup, accessibility standards, and modern web structures for robust foundations.</p>
             </div>
             <div class="card flex flex-col items-center">
-                <svg class="w-16 h-16 mb-4 text-green-400" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
-                </svg>
-                <h3 class="text-2xl font-semibold mb-2">Responsive Design</h3>
-                <p class="text-gray-400 text-center">Building websites that look great and function flawlessly on any device.</p>
+                <i class="fab fa-css3-alt text-blue-500 card-icon"></i>
+                <h3 class="text-3xl font-semibold mb-3">CSS3 & Tailwind CSS</h3>
+                <p class="text-gray-400 text-center text-md">Expertise in crafting beautiful, responsive, and maintainable styles with a focus on utility-first development.</p>
             </div>
             <div class="card flex flex-col items-center">
-                <svg class="w-16 h-16 mb-4 text-red-400" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
-                </svg>
-                <h3 class="text-2xl font-semibold mb-2">Version Control (Git)</h3>
-                <p class="text-gray-400 text-center">Familiar with Git for collaborative development and code management.</p>
+                <i class="fab fa-js-square text-yellow-400 card-icon"></i>
+                <h3 class="text-3xl font-semibold mb-3">JavaScript (Vanilla)</h3>
+                <p class="text-gray-400 text-center text-md">Developing interactive web experiences, dynamic content manipulation, and core application logic without frameworks.</p>
+            </div>
+            <div class="card flex flex-col items-center">
+                <i class="fas fa-mobile-alt text-green-400 card-icon"></i>
+                <h3 class="text-3xl font-semibold mb-3">Responsive Design</h3>
+                <p class="text-gray-400 text-center text-md">Implementing designs that adapt flawlessly and provide optimal viewing across all devices and screen sizes.</p>
+            </div>
+            <div class="card flex flex-col items-center">
+                <i class="fab fa-git-alt text-red-500 card-icon"></i>
+                <h3 class="text-3xl font-semibold mb-3">Git & GitHub</h3>
+                <p class="text-gray-400 text-center text-md">Proficient in version control, collaborative workflows, and seamless code management using Git and GitHub.</p>
+            </div>
+            <div class="card flex flex-col items-center">
+                <i class="fas fa-lightbulb text-purple-400 card-icon"></i>
+                <h3 class="text-3xl font-semibold mb-3">Problem Solving</h3>
+                <p class="text-gray-400 text-center text-md">A logical and analytical approach to identifying, analyzing, and efficiently resolving complex coding challenges.</p>
+            </div>
+            <div class="card flex flex-col items-center">
+                <i class="fas fa-code-branch text-cyan-400 card-icon"></i>
+                <h3 class="text-3xl font-semibold mb-3">Learning & Adaptability</h3>
+                <p class="text-gray-400 text-center text-md">Quickly absorbing new programming paradigms, frameworks, and tools to stay at the forefront of web technology.</p>
+            </div>
+            <div class="card flex flex-col items-center">
+                <i class="fas fa-palette text-pink-400 card-icon"></i>
+                <h3 class="text-3xl font-semibold mb-3">UI/UX Principles</h3>
+                <p class="text-gray-400 text-center text-md">Understanding of user interface design and user experience principles to create intuitive and enjoyable interfaces.</p>
+            </div>
+            <div class="card flex flex-col items-center">
+                <i class="fas fa-terminal text-blue-400 card-icon"></i>
+                <h3 class="text-3xl font-semibold mb-3">Command Line Basics</h3>
+                <p class="text-gray-400 text-center text-md">Comfortable navigating and performing tasks efficiently using the command line interface.</p>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="container mx-auto px-6 py-16 text-center section-hidden">
-        <h2 class="text-4xl font-bold mb-8 text-blue-400">My Projects</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Project Card 1 (Placeholder) -->
-            <div class="card">
-                <img src="https://placehold.co/600x400/1a202c/ffffff?text=Project+1" alt="Project 1" class="rounded-lg mb-4 w-full h-48 object-cover">
-                <h3 class="text-2xl font-semibold mb-2">Awesome School website</h3>
-                <p class="text-gray-400 mb-4">A modern redesign of a classic website, focusing on user experience and responsiveness.</p>
-                <a href="https://rohitdhanani786090.github.io/school/" class="btn btn-primary text-sm">View Project</a>
+    ---
+
+    <section id="projects" class="container mx-auto px-6 section-hidden">
+        <h2 class="section-title text-center">My Creative Portfolio</h2>
+        <p class="section-subtitle text-center">Showcasing my passion for crafting captivating web solutions.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+            <div class="card flex flex-col">
+                <img src="C:\Users\earth\Documents\school website\school site.jpeg" alt="Awesome School Website" class="rounded-xl mb-6 w-full h-52 object-cover shadow-2xl border border-gray-700">
+                <h3 class="text-2xl font-bold mb-3 text-white">Awesome School Website</h3>
+                <p class="text-gray-400 mb-6 flex-grow text-md">A comprehensive and modern website redesign for an educational institution. Features clear navigation, a responsive layout, and engaging content sections designed for students, parents, and faculty.</p>
+                <div class="mt-auto flex flex-wrap justify-between items-center gap-3">
+                    <a href="https://rohitdhanani786090.github.io/school/" target="_blank" rel="noopener noreferrer" class="btn btn-primary text-sm px-4 py-2">View Live <i class="fas fa-arrow-up-right-from-square"></i></a>
+                    <a href="https://github.com/rohitdhanani786090/school" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-purple-400 transition-colors duration-300 text-xl" aria-label="GitHub Repository"><i class="fab fa-github"></i></a>
+                    <span class="text-xs text-gray-500 italic">HTML | CSS | JS</span>
+                </div>
             </div>
-            <!-- Project Card 2 (Placeholder) -->
-            <div class="card">
-                <img src="https://placehold.co/600x400/1a202c/ffffff?text=Project+2" alt="Project 2" class="rounded-lg mb-4 w-full h-48 object-cover">
-                <h3 class="text-2xl font-semibold mb-2">Hostel website</h3>
-                <p class="text-gray-400 mb-4">A dynamic landing page with captivating animations and a clean layout.</p>
-                <a href="https://rohitdhanani786090.github.io/hostel/" class="btn btn-primary text-sm">View Project</a>
+            <div class="card flex flex-col">
+                <img src="C:\Users\earth\Documents\school website\hostel site.jpeg" alt="Hostel Website" class="rounded-xl mb-6 w-full h-52 object-cover shadow-2xl border border-gray-700">
+                <h3 class="text-2xl font-bold mb-3 text-white">Cozy Hostel Landing Page</h3>
+                <p class="text-gray-400 mb-6 flex-grow text-md">A vibrant and inviting landing page for a modern hostel. Designed to attract potential guests with high-quality imagery, compelling features, and intuitive calls-to-action, all optimized for mobile.</p>
+                <div class="mt-auto flex flex-wrap justify-between items-center gap-3">
+                    <a href="https://rohitdhanani786090.github.io/hostel/" target="_blank" rel="noopener noreferrer" class="btn btn-primary text-sm px-4 py-2">View Live <i class="fas fa-arrow-up-right-from-square"></i></a>
+                    <a href="https://github.com/rohitdhanani786090/hostel" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-purple-400 transition-colors duration-300 text-xl" aria-label="GitHub Repository"><i class="fab fa-github"></i></a>
+                    <span class="text-xs text-gray-500 italic">HTML | CSS | JS</span>
+                </div>
             </div>
-            <!-- Project Card 3 (Placeholder) -->
-            <div class="card">
-                <img src="https://placehold.co/600x400/1a202c/ffffff?text=Project+3" alt="Project 3" class="rounded-lg mb-4 w-full h-48 object-cover">
-                <h3 class="text-2xl font-semibold mb-2">Simple JavaScript Game</h3>
-                <p class="text-gray-400 mb-4">A fun, browser-based game built purely with HTML, CSS, and JavaScript.</p>
-                <a href="#" class="btn btn-primary text-sm">View Project</a>
+            <div class="card flex flex-col">
+                <img src="C:\Users\earth\Documents\school website\js game.jpeg" alt="Simple JavaScript Game" class="rounded-xl mb-6 w-full h-52 object-cover shadow-2xl border border-gray-700">
+                <h3 class="text-2xl font-bold mb-3 text-white">Interactive JavaScript Game</h3>
+                <p class="text-gray-400 mb-6 flex-grow text-md">A fun, engaging, and fully client-side browser game demonstrating core JavaScript logic, DOM manipulation, and event handling. A great example of interactive web development.</p>
+                <div class="mt-auto flex flex-wrap justify-between items-center gap-3">
+                    <a href="#" class="btn btn-primary text-sm px-4 py-2 opacity-70 cursor-not-allowed">View Live <i class="fas fa-arrow-up-right-from-square"></i></a>
+                    <a href="#" class="text-gray-500 hover:text-purple-400 transition-colors duration-300 text-xl opacity-70 cursor-not-allowed" aria-label="GitHub Repository"><i class="fab fa-github"></i></a>
+                    <span class="text-xs text-gray-500 italic">HTML | CSS | JS</span>
+                </div>
             </div>
-            <!-- Add more project cards as you complete projects -->
+            <div class="card flex flex-col">
+                <img src="C:\Users\earth\Documents\school website\future.png" alt="Future Project" class="rounded-xl mb-6 w-full h-52 object-cover shadow-2xl border border-gray-700">
+                <h3 class="text-2xl font-bold mb-3 text-white">Your Next Big Project!</h3>
+                <p class="text-gray-400 mb-6 flex-grow text-md">This slot eagerly awaits my next innovative web development challenge. I'm constantly exploring new concepts and ready to bring your vision to life!</p>
+                <div class="mt-auto flex flex-wrap justify-between items-center gap-3">
+                    <button class="btn btn-secondary text-sm px-4 py-2 opacity-70 cursor-not-allowed">Coming Soon</button>
+                    <span class="text-xs text-gray-500 italic">Stay Tuned!</span>
+                </div>
+            </div>
         </div>
-        <div class="mt-12">
-            <a href="#" class="btn btn-secondary">See More on GitHub (Coming Soon)</a>
+        <div class="mt-16 text-center">
+            <a href="https://github.com/rohitdhanani786090" target="_blank" rel="noopener noreferrer" class="btn btn-secondary text-lg">See All Projects on GitHub <i class="fab fa-github ml-2"></i></a>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="container mx-auto px-6 py-16 text-center section-hidden">
-        <h2 class="text-4xl font-bold mb-8 text-blue-400">Get in Touch</h2>
-        <div class="max-w-xl mx-auto bg-gray-800 card p-8">
-            <p class="text-lg mb-6">
-                Have a project in mind or just want to chat? Feel free to reach out!
+    ---
+
+    <section id="contact" class="container mx-auto px-6 section-hidden">
+        <h2 class="section-title text-center">Let's Create Together!</h2>
+        <p class="section-subtitle text-center">Whether for collaboration, opportunities, or just a friendly chat, I'm always open to connecting.</p>
+        <div class="max-w-xl mx-auto bg-gray-800 card p-10 md:p-14">
+            <p class="text-lg mb-8 text-gray-300 text-center">
+                Reach out directly via the form, or connect with me on social media. I look forward to hearing from you!
             </p>
-            <form action="mailto:your-email@example.com" method="post" enctype="text/plain" class="space-y-6">
+            <form action="mailto:rohitdhanani.dev@example.com?subject=Portfolio%20Inquiry" method="post" enctype="text/plain" class="space-y-6 text-left">
                 <div>
-                    <input type="text" id="name" name="name" placeholder="Your Name" class="input-field" required>
+                    <label for="name" class="sr-only">Your Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your Full Name" class="input-field" required>
                 </div>
                 <div>
-                    <input type="email" id="email" name="email" placeholder="Your Email" class="input-field" required>
+                    <label for="email" class="sr-only">Your Email</label>
+                    <input type="email" id="email" name="email" placeholder="Your Email Address" class="input-field" required>
                 </div>
                 <div>
-                    <textarea id="message" name="message" rows="5" placeholder="Your Message" class="input-field" required></textarea>
+                    <label for="subject" class="sr-only">Subject</label>
+                    <input type="text" id="subject" name="subject" placeholder="Subject (e.g., Project Inquiry, Collaboration)" class="input-field">
                 </div>
-                <button type="submit" class="btn btn-primary w-full">Send Message</button>
+                <div>
+                    <label for="message" class="sr-only">Your Message</label>
+                    <textarea id="message" name="message" rows="7" placeholder="Tell me about your project or what's on your mind!" class="input-field" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary w-full text-xl mt-6">Send Message <i class="fas fa-paper-plane"></i></button>
             </form>
-            <div class="mt-8 text-lg">
-                <p class="mb-2">Email: <a href="mailto:your-email@example.com" class="text-blue-400 hover:underline">rohitdhanani7878@gmail.com</a></p>
-                <p>Phone: <a href="tel:+919084589707" class="text-blue-400 hover:underline">+91 9084589707</a></p>
+            <div class="mt-10 text-xl text-gray-300 text-center">
+                <p class="mb-4 font-semibold">Find me across the web:</p>
+                <div class="flex justify-center space-x-8 text-4xl">
+                    <a href="mailto:rohitdhanani.dev@example.com" class="text-purple-400 hover:text-purple-300 transition-colors duration-300" aria-label="Email"><i class="fas fa-envelope-square"></i></a>
+                    <a href="https://linkedin.com/in/rohitdhanani" target="_blank" rel="noopener noreferrer" class="text-purple-400 hover:text-purple-300 transition-colors duration-300" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/rohitdhanani786090" target="_blank" rel="noopener noreferrer" class="text-purple-400 hover:text-purple-300 transition-colors duration-300" aria-label="GitHub"><i class="fab fa-github-square"></i></a>
+                    </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 py-8 text-center text-gray-400">
+    ---
+
+    <footer class="bg-gray-900 py-10 text-center text-gray-400 border-t border-gray-700">
         <div class="container mx-auto px-6">
-            <p>&copy; <span id="current-year"></span> Rohit Dhanani. All rights reserved.</p>
-            <p class="mt-2">Built with ❤️ and code.</p>
+            <p>&copy; <span id="current-year"></span> <b>Rohit Dhanani</b>. All rights reserved.</p>
+            <p class="mt-3 text-sm flex items-center justify-center gap-2">Crafted with <i class="fas fa-heart text-red-500 animate-pulse text-lg"></i> and a passion for <i class="fas fa-code text-blue-400 text-lg"></i> by Rohit.</p>
         </div>
     </footer>
 
@@ -381,15 +484,29 @@
         // Mobile Menu Toggle
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
+        const closeMobileMenuButton = document.getElementById('close-mobile-menu');
 
         mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.remove('hidden');
+            setTimeout(() => {
+                mobileMenu.classList.remove('translate-x-full');
+            }, 10); // Small delay for the transform to apply
+        });
+
+        closeMobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.add('translate-x-full');
+            setTimeout(() => {
+                mobileMenu.classList.add('hidden');
+            }, 500); // Match transition duration
         });
 
         // Close mobile menu when a link is clicked
         mobileMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.add('translate-x-full');
+                setTimeout(() => {
+                    mobileMenu.classList.add('hidden');
+                }, 500); // Match transition duration
             });
         });
 
@@ -398,7 +515,7 @@
         const observerOptions = {
             root: null, // viewport
             rootMargin: '0px',
-            threshold: 0.1 // 10% of the section must be visible
+            threshold: 0.15 // 15% of the section must be visible
         };
 
         const sectionObserver = new IntersectionObserver((entries, observer) => {
@@ -420,28 +537,34 @@
         window.onload = function() {
             const scene = new THREE.Scene();
             const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('hero-canvas'), alpha: true });
+            const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('hero-canvas'), alpha: true, antialias: true });
             renderer.setSize(window.innerWidth, window.innerHeight);
             renderer.setPixelRatio(window.devicePixelRatio);
 
             // Particle geometry and material
             const particlesGeometry = new THREE.BufferGeometry();
-            const particlesCount = 2000;
+            const particlesCount = 4000; // Even more particles for denser effect
             const posArray = new Float32Array(particlesCount * 3); // x, y, z for each particle
+            const colorArray = new Float32Array(particlesCount * 3); // r, g, b for each particle
 
             for (let i = 0; i < particlesCount * 3; i++) {
-                // Random positions within a cube
-                posArray[i] = (Math.random() - 0.5) * 20; // -10 to 10
+                posArray[i] = (Math.random() - 0.5) * 30; // Wider spread
+                // Subtle color variation for particles, leaning towards purple/blue
+                colorArray[i * 3] = 0.4 + Math.random() * 0.2; // Red component
+                colorArray[i * 3 + 1] = 0.2 + Math.random() * 0.3; // Green component
+                colorArray[i * 3 + 2] = 0.8 + Math.random() * 0.2; // Blue component (dominant for purple)
             }
 
             particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+            particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colorArray, 3));
 
             const particlesMaterial = new THREE.PointsMaterial({
-                size: 0.02,
-                color: 0x4a90e2, // Blue color for particles
+                size: 0.04, // Slightly larger particles
+                vertexColors: true, // Use vertex colors
                 transparent: true,
                 blending: THREE.AdditiveBlending, // For glowing effect
-                depthWrite: false // Prevents particles from obscuring each other incorrectly
+                depthWrite: false, // Prevents particles from obscuring each other incorrectly
+                sizeAttenuation: true // Particles closer appear larger
             });
 
             const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
@@ -454,37 +577,30 @@
                 requestAnimationFrame(animate);
 
                 // Rotate particles slowly
-                particlesMesh.rotation.x += 0.0005;
-                particlesMesh.rotation.y += 0.0008;
+                particlesMesh.rotation.x += 0.0002; // Even slower rotation
+                particlesMesh.rotation.y += 0.0003; // Even slower rotation
 
                 renderer.render(scene, camera);
             };
 
             animate();
 
-            // Handle window resize
-            window.addEventListener('resize', () => {
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(window.innerWidth, window.innerHeight);
-                renderer.setPixelRatio(window.devicePixelRatio);
-            });
-
-            // Mouse interaction for camera movement (subtle parallax)
+            // Mouse interaction for camera movement (more pronounced parallax)
             let mouseX = 0;
             let mouseY = 0;
-            const targetX = 0;
-            const targetY = 0;
+            const windowHalfX = window.innerWidth / 2;
+            const windowHalfY = window.innerHeight / 2;
 
             document.addEventListener('mousemove', (event) => {
-                mouseX = (event.clientX / window.innerWidth) * 2 - 1;
-                mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+                mouseX = (event.clientX - windowHalfX) / windowHalfX;
+                mouseY = (event.clientY - windowHalfY) / windowHalfY;
             });
 
             const updateCameraPosition = () => {
-                camera.position.x += (mouseX * 0.5 - camera.position.x) * 0.05;
-                camera.position.y += (mouseY * 0.5 - camera.position.y) * 0.05;
-                camera.lookAt(scene.position); // Always look at the center
+                // Smoothly interpolate camera position towards mouse
+                camera.position.x += (mouseX * 1.5 - camera.position.x) * 0.03; // Increased parallax effect
+                camera.position.y += (-mouseY * 1.5 - camera.position.y) * 0.03; // Increased parallax effect
+                camera.lookAt(scene.position); // Always look at the center of the particles
                 requestAnimationFrame(updateCameraPosition);
             };
             updateCameraPosition();
