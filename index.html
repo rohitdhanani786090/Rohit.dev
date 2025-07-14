@@ -1,28 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rohit Dhanani - Elite Web Development Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Lato:wght@300;400;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <style>
         /* Custom CSS for base styles, animations, and refined aesthetics */
         body {
             font-family: 'Lato', sans-serif;
-            background-color: #0A0A0C; /* Deep, almost black charcoal */
-            color: #E0E0E0; /* Soft white text */
+            background-color: #0A0A0C;
+            /* Deep, almost black charcoal */
+            color: #E0E0E0;
+            /* Soft white text */
             line-height: 1.6;
-            overflow-x: hidden; /* Prevent horizontal scroll */
+            overflow-x: hidden;
+            /* Prevent horizontal scroll */
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
 
-        h1, h2, h3, h4, h5, h6 {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
             font-family: 'Montserrat', sans-serif;
-            color: #F0F0F0; /* Brighter white for headings */
+            color: #F0F0F0;
+            /* Brighter white for headings */
         }
 
         html {
@@ -31,14 +43,18 @@
 
         /* Section padding */
         section {
-            padding: 100px 0; /* More generous vertical padding */
-            position: relative; /* For z-index stacking if needed */
+            padding: 100px 0;
+            /* More generous vertical padding */
+            position: relative;
+            /* For z-index stacking if needed */
         }
 
         /* Header & Navigation */
         header {
-            background-color: rgba(10, 10, 12, 0.95); /* Deeper background with slight transparency */
-            border-bottom: 1px solid rgba(40, 40, 45, 0.5); /* Subtle bottom border */
+            background-color: rgba(10, 10, 12, 0.95);
+            /* Deeper background with slight transparency */
+            border-bottom: 1px solid rgba(40, 40, 45, 0.5);
+            /* Subtle bottom border */
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
 
@@ -52,11 +68,15 @@
             content: '';
             position: absolute;
             width: 0;
-            height: 3px; /* Thicker underline */
-            bottom: -8px; /* Lower underline */
-            left: 50%; /* Center start */
+            height: 3px;
+            /* Thicker underline */
+            bottom: -8px;
+            /* Lower underline */
+            left: 50%;
+            /* Center start */
             transform: translateX(-50%);
-            background-color: #6A32F9; /* Vibrant primary accent color */
+            background-color: #6A32F9;
+            /* Vibrant primary accent color */
             border-radius: 2px;
             transition: width 0.3s cubic-bezier(0.23, 1, 0.32, 1);
         }
@@ -68,7 +88,8 @@
         /* Hero section specific styles */
         #hero {
             height: 100vh;
-            background: linear-gradient(135deg, #101015, #0A0A0C); /* Subtle dark gradient */
+            background: linear-gradient(135deg, #101015, #0A0A0C);
+            /* Subtle dark gradient */
         }
 
         #hero-canvas {
@@ -78,7 +99,8 @@
             width: 100%;
             height: 100%;
             z-index: 0;
-            opacity: 0.6; /* Slightly more subtle particles */
+            opacity: 0.6;
+            /* Slightly more subtle particles */
         }
 
         #hero-content {
@@ -88,8 +110,10 @@
             opacity: 0;
             transform: translateY(30px);
             animation: fadeInSlideUp 1.2s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-            animation-delay: 0.8s; /* Longer delay for dramatic entrance */
-            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Text shadow for pop */
+            animation-delay: 0.8s;
+            /* Longer delay for dramatic entrance */
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            /* Text shadow for pop */
         }
 
         @keyframes fadeInSlideUp {
@@ -102,7 +126,8 @@
         /* General section reveal animation */
         .section-hidden {
             opacity: 0;
-            transform: translateY(70px); /* More pronounced slide up */
+            transform: translateY(70px);
+            /* More pronounced slide up */
             transition: opacity 1s cubic-bezier(0.23, 1, 0.32, 1), transform 1s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
@@ -124,11 +149,13 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 8px; /* Space between text and icon */
+            gap: 8px;
+            /* Space between text and icon */
         }
 
         .btn-primary {
-            background: linear-gradient(90deg, #6A32F9 0%, #8C52FF 100%); /* Gradient background */
+            background: linear-gradient(90deg, #6A32F9 0%, #8C52FF 100%);
+            /* Gradient background */
             color: #ffffff;
             border: none;
         }
@@ -136,7 +163,8 @@
         .btn-primary:hover {
             transform: translateY(-5px);
             box-shadow: 0 12px 30px rgba(106, 50, 249, 0.4);
-            filter: brightness(1.1); /* Slightly brighter on hover */
+            filter: brightness(1.1);
+            /* Slightly brighter on hover */
         }
 
         .btn-secondary {
@@ -148,37 +176,46 @@
         .btn-secondary:hover {
             background-color: #202025;
             color: #ffffff;
-            border-color: #6A32F9; /* Accent border on hover */
+            border-color: #6A32F9;
+            /* Accent border on hover */
             transform: translateY(-5px);
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
         }
 
         /* Cards */
         .card {
-            background-color: #1A1A1E; /* Slightly lighter than body for contrast */
-            border-radius: 20px; /* More rounded corners */
-            padding: 40px; /* More padding */
+            background-color: #1A1A1E;
+            /* Slightly lighter than body for contrast */
+            border-radius: 20px;
+            /* More rounded corners */
+            padding: 40px;
+            /* More padding */
             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
             transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.4s cubic-bezier(0.23, 1, 0.32, 1), border-color 0.4s ease-in-out;
-            border: 1px solid #28282D; /* Subtle border */
+            border: 1px solid #28282D;
+            /* Subtle border */
             overflow: hidden;
             position: relative;
         }
 
         .card:hover {
-            transform: translateY(-10px); /* More pronounced lift */
+            transform: translateY(-10px);
+            /* More pronounced lift */
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
-            border-color: #6A32F9; /* Highlight border on hover */
+            border-color: #6A32F9;
+            /* Highlight border on hover */
         }
 
         .card-icon {
             transition: transform 0.4s ease-in-out;
-            font-size: 5rem; /* Larger icons */
+            font-size: 5rem;
+            /* Larger icons */
             margin-bottom: 24px;
         }
 
         .card:hover .card-icon {
-            transform: scale(1.15) rotate(5deg); /* More dynamic icon animation */
+            transform: scale(1.15) rotate(5deg);
+            /* More dynamic icon animation */
         }
 
         /* Input Fields */
@@ -195,7 +232,8 @@
         .input-field:focus {
             outline: none;
             border-color: #6A32F9;
-            box-shadow: 0 0 0 5px rgba(106, 50, 249, 0.3); /* Vibrant focus ring */
+            box-shadow: 0 0 0 5px rgba(106, 50, 249, 0.3);
+            /* Vibrant focus ring */
         }
 
         textarea.input-field {
@@ -205,10 +243,12 @@
 
         /* Section Title Styling */
         .section-title {
-            font-size: 3.5rem; /* Larger main headings */
+            font-size: 3.5rem;
+            /* Larger main headings */
             font-weight: 800;
             margin-bottom: 24px;
-            background: linear-gradient(45deg, #6A32F9, #8C52FF); /* Gradient for headings */
+            background: linear-gradient(45deg, #6A32F9, #8C52FF);
+            /* Gradient for headings */
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
@@ -228,33 +268,42 @@
             .section-title {
                 font-size: 2.5rem;
             }
+
             .section-subtitle {
                 font-size: 1.2rem;
             }
+
             #hero-content h1 {
                 font-size: 3.2rem;
             }
+
             #hero-content p {
                 font-size: 1.3rem;
             }
+
             .btn {
                 padding: 12px 24px;
                 font-size: 0.9rem;
             }
+
             .card {
                 padding: 30px;
             }
+
             .card-icon {
                 font-size: 4rem;
             }
         }
     </style>
 </head>
+
 <body class="antialiased">
 
     <header class="fixed top-0 left-0 w-full z-50 py-4">
         <nav class="container mx-auto px-6 flex items-center justify-between">
-            <a href="#" class="text-3xl font-extrabold text-white hover:text-indigo-400 transition-colors duration-300">Rohit.<span class="text-purple-500">dev</span></a>
+            <a href="#"
+                class="text-3xl font-extrabold text-white hover:text-indigo-400 transition-colors duration-300">Rohit.<span
+                    class="text-purple-500">dev</span></a>
             <div class="hidden md:flex space-x-10">
                 <a href="#about" class="nav-link text-gray-300 hover:text-white text-lg">About</a>
                 <a href="#skills" class="nav-link text-gray-300 hover:text-white text-lg">Skills</a>
@@ -262,21 +311,31 @@
                 <a href="#contact" class="nav-link text-gray-300 hover:text-white text-lg">Contact</a>
             </div>
             <button id="mobile-menu-button" class="md:hidden text-gray-300 hover:text-white focus:outline-none z-50">
-                <svg class="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                <svg class="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7">
+                    </path>
                 </svg>
             </button>
         </nav>
-        <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-gray-900 bg-opacity-95 backdrop-blur-md flex flex-col items-center justify-center space-y-8 text-xl transform translate-x-full transition-transform duration-500 ease-in-out">
-            <button id="close-mobile-menu" class="absolute top-6 right-6 text-gray-300 hover:text-white focus:outline-none">
-                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        <div id="mobile-menu"
+            class="hidden md:hidden fixed inset-0 bg-gray-900 bg-opacity-95 backdrop-blur-md flex flex-col items-center justify-center space-y-8 text-xl transform translate-x-full transition-transform duration-500 ease-in-out">
+            <button id="close-mobile-menu"
+                class="absolute top-6 right-6 text-gray-300 hover:text-white focus:outline-none">
+                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
                 </svg>
             </button>
-            <a href="#about" class="block text-gray-200 hover:text-purple-400 transition-colors duration-300 text-3xl font-bold">About</a>
-            <a href="#skills" class="block text-gray-200 hover:text-purple-400 transition-colors duration-300 text-3xl font-bold">Skills</a>
-            <a href="#projects" class="block text-gray-200 hover:text-purple-400 transition-colors duration-300 text-3xl font-bold">Projects</a>
-            <a href="#contact" class="block text-gray-200 hover:text-purple-400 transition-colors duration-300 text-3xl font-bold">Contact</a>
+            <a href="#about"
+                class="block text-gray-200 hover:text-purple-400 transition-colors duration-300 text-3xl font-bold">About</a>
+            <a href="#skills"
+                class="block text-gray-200 hover:text-purple-400 transition-colors duration-300 text-3xl font-bold">Skills</a>
+            <a href="#projects"
+                class="block text-gray-200 hover:text-purple-400 transition-colors duration-300 text-3xl font-bold">Projects</a>
+            <a href="#contact"
+                class="block text-gray-200 hover:text-purple-400 transition-colors duration-300 text-3xl font-bold">Contact</a>
         </div>
     </header>
 
@@ -288,7 +347,8 @@
                 <span class="text-white">Rohit Dhanani</span>
             </h1>
             <p class="text-2xl md:text-4xl text-gray-300 mb-10 font-light max-w-3xl mx-auto">
-                A <b>passionate and innovative Web Developer & Student</b>, dedicated to crafting <span class="text-purple-300 font-medium">exceptional digital experiences</span>.
+                A <b>passionate and innovative Web Developer & Student</b>, dedicated to crafting <span
+                    class="text-purple-300 font-medium">exceptional digital experiences</span>.
             </p>
             <div class="flex flex-col sm:flex-row justify-center space-y-5 sm:space-y-0 sm:space-x-8">
                 <a href="#projects" class="btn btn-primary">Explore My Work <i class="fas fa-arrow-right"></i></a>
@@ -301,19 +361,32 @@
         <p class="section-subtitle text-center">Discover the passion and drive behind my digital creations.</p>
         <div class="max-w-4xl mx-auto bg-gray-800 card p-10 md:p-14">
             <p class="text-lg mb-6 text-gray-300 leading-relaxed">
-                Hello! I'm <b>Rohit Dhanani</b>, a 16-year-old <b>front-end web developer</b> currently balancing my academic pursuits with an insatiable drive for web creation. My journey into development began out of sheer curiosity for how websites come to life, quickly evolving into a profound passion for **designing and building user-centric interfaces**. I am relentlessly curious, always learning, and constantly seeking new challenges to enhance my technical repertoire.
+                Hello! I'm <b>Rohit Dhanani</b>, a 16-year-old <b>front-end web developer</b> currently balancing my
+                academic pursuits with an insatiable drive for web creation. My journey into development began out of
+                sheer curiosity for how websites come to life, quickly evolving into a profound passion for **designing
+                and building user-centric interfaces**. I am relentlessly curious, always learning, and constantly
+                seeking new challenges to enhance my technical repertoire.
             </p>
             <p class="text-lg mb-6 text-gray-300 leading-relaxed">
-                I thrive on transforming complex problems into elegant, intuitive solutions through code. Whether it's **pixel-perfect layouts, seamless animations, or robust functionality**, I enjoy every step of bringing a concept from ideation to a fully realized digital product. My commitment to clean, efficient, and maintainable code ensures not just beautiful aesthetics, but also high performance and scalability.
+                I thrive on transforming complex problems into elegant, intuitive solutions through code. Whether it's
+                **pixel-perfect layouts, seamless animations, or robust functionality**, I enjoy every step of bringing
+                a concept from ideation to a fully realized digital product. My commitment to clean, efficient, and
+                maintainable code ensures not just beautiful aesthetics, but also high performance and scalability.
             </p>
             <div class="mt-10 text-left bg-gray-900 p-8 rounded-xl shadow-inner border border-gray-700">
                 <h3 class="text-2xl font-bold mb-6 text-purple-300">Quick Facts:</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-8 text-lg text-gray-300">
-                    <p><strong class="text-purple-200"><i class="fas fa-user-tie mr-3 w-5 text-center"></i>Name:</strong> Rohit Dhanani</p>
-                    <p><strong class="text-purple-200"><i class="fas fa-birthday-cake mr-3 w-5 text-center"></i>Age:</strong> 16 years</p>
-                    <p><strong class="text-purple-200"><i class="fas fa-calendar-alt mr-3 w-5 text-center"></i>Birth Date:</strong> October 19, 2009</p>
-                    <p><strong class="text-purple-200"><i class="fas fa-phone-alt mr-3 w-5 text-center"></i>Contact:</strong> +91 9084589707</p>
-                    <p class="md:col-span-2"><strong class="text-purple-200"><i class="fas fa-graduation-cap mr-3 w-5 text-center"></i>Status:</strong> Student & Aspiring Web Developer</p>
+                    <p><strong class="text-purple-200"><i
+                                class="fas fa-user-tie mr-3 w-5 text-center"></i>Name:</strong> Rohit Dhanani</p>
+                    <p><strong class="text-purple-200"><i
+                                class="fas fa-birthday-cake mr-3 w-5 text-center"></i>Age:</strong> 16 years</p>
+                    <p><strong class="text-purple-200"><i class="fas fa-calendar-alt mr-3 w-5 text-center"></i>Birth
+                            Date:</strong> October 19, 2009</p>
+                    <p><strong class="text-purple-200"><i
+                                class="fas fa-phone-alt mr-3 w-5 text-center"></i>Contact:</strong> +91 9084589707</p>
+                    <p class="md:col-span-2"><strong class="text-purple-200"><i
+                                class="fas fa-graduation-cap mr-3 w-5 text-center"></i>Status:</strong> Student &
+                        Aspiring Web Developer</p>
                 </div>
             </div>
         </div>
@@ -325,47 +398,56 @@
             <div class="card flex flex-col items-center">
                 <i class="fab fa-html5 text-orange-500 card-icon"></i>
                 <h3 class="text-3xl font-semibold mb-3">HTML5</h3>
-                <p class="text-gray-400 text-center text-md">Mastery of semantic markup, accessibility standards, and modern web structures for robust foundations.</p>
+                <p class="text-gray-400 text-center text-md">Mastery of semantic markup, accessibility standards, and
+                    modern web structures for robust foundations.</p>
             </div>
             <div class="card flex flex-col items-center">
                 <i class="fab fa-css3-alt text-blue-500 card-icon"></i>
                 <h3 class="text-3xl font-semibold mb-3">CSS3 & Tailwind CSS</h3>
-                <p class="text-gray-400 text-center text-md">Expertise in crafting beautiful, responsive, and maintainable styles with a focus on utility-first development.</p>
+                <p class="text-gray-400 text-center text-md">Expertise in crafting beautiful, responsive, and
+                    maintainable styles with a focus on utility-first development.</p>
             </div>
             <div class="card flex flex-col items-center">
                 <i class="fab fa-js-square text-yellow-400 card-icon"></i>
                 <h3 class="text-3xl font-semibold mb-3">JavaScript (Vanilla)</h3>
-                <p class="text-gray-400 text-center text-md">Developing interactive web experiences, dynamic content manipulation, and core application logic without frameworks.</p>
+                <p class="text-gray-400 text-center text-md">Developing interactive web experiences, dynamic content
+                    manipulation, and core application logic without frameworks.</p>
             </div>
             <div class="card flex flex-col items-center">
                 <i class="fas fa-mobile-alt text-green-400 card-icon"></i>
                 <h3 class="text-3xl font-semibold mb-3">Responsive Design</h3>
-                <p class="text-gray-400 text-center text-md">Implementing designs that adapt flawlessly and provide optimal viewing across all devices and screen sizes.</p>
+                <p class="text-gray-400 text-center text-md">Implementing designs that adapt flawlessly and provide
+                    optimal viewing across all devices and screen sizes.</p>
             </div>
             <div class="card flex flex-col items-center">
                 <i class="fab fa-git-alt text-red-500 card-icon"></i>
                 <h3 class="text-3xl font-semibold mb-3">Git & GitHub</h3>
-                <p class="text-gray-400 text-center text-md">Proficient in version control, collaborative workflows, and seamless code management using Git and GitHub.</p>
+                <p class="text-gray-400 text-center text-md">Proficient in version control, collaborative workflows, and
+                    seamless code management using Git and GitHub.</p>
             </div>
             <div class="card flex flex-col items-center">
                 <i class="fas fa-lightbulb text-purple-400 card-icon"></i>
                 <h3 class="text-3xl font-semibold mb-3">Problem Solving</h3>
-                <p class="text-gray-400 text-center text-md">A logical and analytical approach to identifying, analyzing, and efficiently resolving complex coding challenges.</p>
+                <p class="text-gray-400 text-center text-md">A logical and analytical approach to identifying,
+                    analyzing, and efficiently resolving complex coding challenges.</p>
             </div>
             <div class="card flex flex-col items-center">
                 <i class="fas fa-code-branch text-cyan-400 card-icon"></i>
                 <h3 class="text-3xl font-semibold mb-3">Learning & Adaptability</h3>
-                <p class="text-gray-400 text-center text-md">Quickly absorbing new programming paradigms, frameworks, and tools to stay at the forefront of web technology.</p>
+                <p class="text-gray-400 text-center text-md">Quickly absorbing new programming paradigms, frameworks,
+                    and tools to stay at the forefront of web technology.</p>
             </div>
             <div class="card flex flex-col items-center">
                 <i class="fas fa-palette text-pink-400 card-icon"></i>
                 <h3 class="text-3xl font-semibold mb-3">UI/UX Principles</h3>
-                <p class="text-gray-400 text-center text-md">Understanding of user interface design and user experience principles to create intuitive and enjoyable interfaces.</p>
+                <p class="text-gray-400 text-center text-md">Understanding of user interface design and user experience
+                    principles to create intuitive and enjoyable interfaces.</p>
             </div>
             <div class="card flex flex-col items-center">
                 <i class="fas fa-terminal text-blue-400 card-icon"></i>
                 <h3 class="text-3xl font-semibold mb-3">Command Line Basics</h3>
-                <p class="text-gray-400 text-center text-md">Comfortable navigating and performing tasks efficiently using the command line interface.</p>
+                <p class="text-gray-400 text-center text-md">Comfortable navigating and performing tasks efficiently
+                    using the command line interface.</p>
             </div>
         </div>
     </section>
@@ -374,99 +456,150 @@
         <p class="section-subtitle text-center">Showcasing my passion for crafting captivating web solutions.</p>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
             <div class="card flex flex-col">
-                <img src="C:\Users\earth\Documents\school website\school site.jpeg" alt="Awesome School Website" class="rounded-xl mb-6 w-full h-52 object-cover shadow-2xl border border-gray-700">
+                <img src="https://github.com/rohitdhanani786090/Rohit.dev/blob/main/school%20site.jpeg?raw=true"
+                    alt="Awesome School Website"
+                    class="rounded-xl mb-6 w-full h-52 object-cover shadow-2xl border border-gray-700">
                 <h3 class="text-2xl font-bold mb-3 text-white">Awesome School Website</h3>
-                <p class="text-gray-400 mb-6 flex-grow text-md">A comprehensive and modern website redesign for an educational institution. Features clear navigation, a responsive layout, and engaging content sections designed for students, parents, and faculty.</p>
+                <p class="text-gray-400 mb-6 flex-grow text-md">A comprehensive and modern website redesign for an
+                    educational institution. Features clear navigation, a responsive layout, and engaging content
+                    sections designed for students, parents, and faculty.</p>
                 <div class="mt-auto flex flex-wrap justify-between items-center gap-3">
-                    <a href="https://rohitdhanani786090.github.io/school/" target="_blank" rel="noopener noreferrer" class="btn btn-primary text-sm px-4 py-2">View Live <i class="fas fa-arrow-up-right-from-square"></i></a>
-                    <a href="https://github.com/rohitdhanani786090/school" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-purple-400 transition-colors duration-300 text-xl" aria-label="GitHub Repository"><i class="fab fa-github"></i></a>
+                    <a href="https://rohitdhanani786090.github.io/school/" target="_blank" rel="noopener noreferrer"
+                        class="btn btn-primary text-sm px-4 py-2">View Live <i
+                            class="fas fa-arrow-up-right-from-square"></i></a>
+                    <a href="https://github.com/rohitdhanani786090/school" target="_blank" rel="noopener noreferrer"
+                        class="text-gray-500 hover:text-purple-400 transition-colors duration-300 text-xl"
+                        aria-label="GitHub Repository"><i class="fab fa-github"></i></a>
                     <span class="text-xs text-gray-500 italic">HTML | CSS | JS</span>
                 </div>
             </div>
             <div class="card flex flex-col">
-                <img src="C:\Users\earth\Documents\school website\hostel site.jpeg" alt="Hostel Website" class="rounded-xl mb-6 w-full h-52 object-cover shadow-2xl border border-gray-700">
+                <img src="https://github.com/rohitdhanani786090/Rohit.dev/blob/main/hostel%20site.jpeg?raw=true"
+                    class="rounded-xl mb-6 w-full h-52 object-cover shadow-2xl border border-gray-700">
                 <h3 class="text-2xl font-bold mb-3 text-white">Cozy Hostel Landing Page</h3>
-                <p class="text-gray-400 mb-6 flex-grow text-md">A vibrant and inviting landing page for a modern hostel. Designed to attract potential guests with high-quality imagery, compelling features, and intuitive calls-to-action, all optimized for mobile.</p>
+                <p class="text-gray-400 mb-6 flex-grow text-md">A vibrant and inviting landing page for a modern hostel.
+                    Designed to attract potential guests with high-quality imagery, compelling features, and intuitive
+                    calls-to-action, all optimized for mobile.</p>
                 <div class="mt-auto flex flex-wrap justify-between items-center gap-3">
-                    <a href="https://rohitdhanani786090.github.io/hostel/" target="_blank" rel="noopener noreferrer" class="btn btn-primary text-sm px-4 py-2">View Live <i class="fas fa-arrow-up-right-from-square"></i></a>
-                    <a href="https://github.com/rohitdhanani786090/hostel" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-purple-400 transition-colors duration-300 text-xl" aria-label="GitHub Repository"><i class="fab fa-github"></i></a>
+                    <a href="https://rohitdhanani786090.github.io/hostel/" target="_blank" rel="noopener noreferrer"
+                        class="btn btn-primary text-sm px-4 py-2">View Live <i
+                            class="fas fa-arrow-up-right-from-square"></i></a>
+                    <a href="https://github.com/rohitdhanani786090/hostel" target="_blank" rel="noopener noreferrer"
+                        class="text-gray-500 hover:text-purple-400 transition-colors duration-300 text-xl"
+                        aria-label="GitHub Repository"><i class="fab fa-github"></i></a>
                     <span class="text-xs text-gray-500 italic">HTML | CSS | JS</span>
                 </div>
             </div>
             <div class="card flex flex-col">
-                <img src="C:\Users\earth\Documents\school website\js game.jpeg" alt="Simple JavaScript Game" class="rounded-xl mb-6 w-full h-52 object-cover shadow-2xl border border-gray-700">
+                <img src="https://github.com/rohitdhanani786090/Rohit.dev/blob/main/js%20game.jpeg?raw=true"
+                    alt="Simple JavaScript Game"
+                    class="rounded-xl mb-6 w-full h-52 object-cover shadow-2xl border border-gray-700">
                 <h3 class="text-2xl font-bold mb-3 text-white">Interactive JavaScript Game</h3>
-                <p class="text-gray-400 mb-6 flex-grow text-md">A fun, engaging, and fully client-side browser game demonstrating core JavaScript logic, DOM manipulation, and event handling. A great example of interactive web development.</p>
+                <p class="text-gray-400 mb-6 flex-grow text-md">A fun, engaging, and fully client-side browser game
+                    demonstrating core JavaScript logic, DOM manipulation, and event handling. A great example of
+                    interactive web development.</p>
                 <div class="mt-auto flex flex-wrap justify-between items-center gap-3">
-                    <a href="#" class="btn btn-primary text-sm px-4 py-2 opacity-70 cursor-not-allowed">View Live <i class="fas fa-arrow-up-right-from-square"></i></a>
-                    <a href="#" class="text-gray-500 hover:text-purple-400 transition-colors duration-300 text-xl opacity-70 cursor-not-allowed" aria-label="GitHub Repository"><i class="fab fa-github"></i></a>
+                    <a href="#" class="btn btn-primary text-sm px-4 py-2 opacity-70 cursor-not-allowed">View Live <i
+                            class="fas fa-arrow-up-right-from-square"></i></a>
+                    <a href="#"
+                        class="text-gray-500 hover:text-purple-400 transition-colors duration-300 text-xl opacity-70 cursor-not-allowed"
+                        aria-label="GitHub Repository"><i class="fab fa-github"></i></a>
                     <span class="text-xs text-gray-500 italic">HTML | CSS | JS</span>
                 </div>
             </div>
             <div class="card flex flex-col">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXDQh8NnWdceLwxLE7UlGfv6Bzwpg5PVAeyw&s" alt="Simple JavaScript Game" class="rounded-xl mb-6 w-full h-52 object-cover shadow-2xl border border-gray-700">
+                <img src="https://github.com/rohitdhanani786090/Rohit.dev/blob/main/images.jpeg?raw=true"
+                    alt="Simple JavaScript Game"
+                    class="rounded-xl mb-6 w-full h-52 object-cover shadow-2xl border border-gray-700">
                 <h3 class="text-2xl font-bold mb-3 text-white">Elite Academy</h3>
-                <p class="text-gray-400 mb-6 flex-grow text-md">A fun, engaging, and fully client-side browser site demonstrating core JavaScript logic, DOM manipulation, and event handling. A great example of interactive web development.</p>
+                <p class="text-gray-400 mb-6 flex-grow text-md">A fun, engaging, and fully client-side browser site
+                    demonstrating core JavaScript logic, DOM manipulation, and event handling. A great example of
+                    interactive web development.</p>
                 <div class="mt-auto flex flex-wrap justify-between items-center gap-3">
-                    <a href="https://rohitdhanani786090.github.io/Elite-Academy/" class="btn btn-primary text-sm px-4 py-2 opacity-70 cursor-not-allowed">View Live <i class="fas fa-arrow-up-right-from-square"></i></a>
-                    <a href="https://github.com/rohitdhanani786090/Elite-Academy" class="text-gray-500 hover:text-purple-400 transition-colors duration-300 text-xl opacity-70 cursor-not-allowed" aria-label="GitHub Repository"><i class="fab fa-github"></i></a>
+                    <a href="https://rohitdhanani786090.github.io/Elite-Academy/"
+                        class="btn btn-primary text-sm px-4 py-2 opacity-70 cursor-not-allowed">View Live <i
+                            class="fas fa-arrow-up-right-from-square"></i></a>
+                    <a href="https://github.com/rohitdhanani786090/Elite-Academy"
+                        class="text-gray-500 hover:text-purple-400 transition-colors duration-300 text-xl opacity-70 cursor-not-allowed"
+                        aria-label="GitHub Repository"><i class="fab fa-github"></i></a>
                     <span class="text-xs text-gray-500 italic">HTML | CSS | JS</span>
                 </div>
             </div>
             <div class="card flex flex-col">
-                <img src="C:\Users\earth\Documents\school website\future.png" alt="Future Project" class="rounded-xl mb-6 w-full h-52 object-cover shadow-2xl border border-gray-700">
+                <img src="https://github.com/rohitdhanani786090/Rohit.dev/blob/main/future.png?raw=true"
+                    alt="Future Project"
+                    class="rounded-xl mb-6 w-full h-52 object-cover shadow-2xl border border-gray-700">
                 <h3 class="text-2xl font-bold mb-3 text-white">Your Next Big Project!</h3>
-                <p class="text-gray-400 mb-6 flex-grow text-md">This slot eagerly awaits my next innovative web development challenge. I'm constantly exploring new concepts and ready to bring your vision to life!</p>
+                <p class="text-gray-400 mb-6 flex-grow text-md">This slot eagerly awaits my next innovative web
+                    development challenge. I'm constantly exploring new concepts and ready to bring your vision to life!
+                </p>
                 <div class="mt-auto flex flex-wrap justify-between items-center gap-3">
-                    <button class="btn btn-secondary text-sm px-4 py-2 opacity-70 cursor-not-allowed">Coming Soon</button>
+                    <button class="btn btn-secondary text-sm px-4 py-2 opacity-70 cursor-not-allowed">Coming
+                        Soon</button>
                     <span class="text-xs text-gray-500 italic">Stay Tuned!</span>
                 </div>
             </div>
         </div>
         <div class="mt-16 text-center">
-            <a href="https://github.com/rohitdhanani786090" target="_blank" rel="noopener noreferrer" class="btn btn-secondary text-lg">See All Projects on GitHub <i class="fab fa-github ml-2"></i></a>
+            <a href="https://github.com/rohitdhanani786090" target="_blank" rel="noopener noreferrer"
+                class="btn btn-secondary text-lg">See All Projects on GitHub <i class="fab fa-github ml-2"></i></a>
         </div>
     </section>
     <section id="contact" class="container mx-auto px-6 section-hidden">
         <h2 class="section-title text-center">Let's Create Together!</h2>
-        <p class="section-subtitle text-center">Whether for collaboration, opportunities, or just a friendly chat, I'm always open to connecting.</p>
+        <p class="section-subtitle text-center">Whether for collaboration, opportunities, or just a friendly chat, I'm
+            always open to connecting.</p>
         <div class="max-w-xl mx-auto bg-gray-800 card p-10 md:p-14">
             <p class="text-lg mb-8 text-gray-300 text-center">
                 Reach out directly via the form, or connect with me on social media. I look forward to hearing from you!
             </p>
-            <form action="mailto:rohitdhanani.dev@example.com?subject=Portfolio%20Inquiry" method="post" enctype="text/plain" class="space-y-6 text-left">
+            <form action="mailto:rohitdhanani.dev@example.com?subject=Portfolio%20Inquiry" method="post"
+                enctype="text/plain" class="space-y-6 text-left">
                 <div>
                     <label for="name" class="sr-only">Your Name</label>
                     <input type="text" id="name" name="name" placeholder="Your Full Name" class="input-field" required>
                 </div>
                 <div>
                     <label for="email" class="sr-only">Your Email</label>
-                    <input type="email" id="email" name="email" placeholder="Your Email Address" class="input-field" required>
+                    <input type="email" id="email" name="email" placeholder="Your Email Address" class="input-field"
+                        required>
                 </div>
                 <div>
                     <label for="subject" class="sr-only">Subject</label>
-                    <input type="text" id="subject" name="subject" placeholder="Subject (e.g., Project Inquiry, Collaboration)" class="input-field">
+                    <input type="text" id="subject" name="subject"
+                        placeholder="Subject (e.g., Project Inquiry, Collaboration)" class="input-field">
                 </div>
                 <div>
                     <label for="message" class="sr-only">Your Message</label>
-                    <textarea id="message" name="message" rows="7" placeholder="Tell me about your project or what's on your mind!" class="input-field" required></textarea>
+                    <textarea id="message" name="message" rows="7"
+                        placeholder="Tell me about your project or what's on your mind!" class="input-field"
+                        required></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary w-full text-xl mt-6">Send Message <i class="fas fa-paper-plane"></i></button>
+                <button type="submit" class="btn btn-primary w-full text-xl mt-6">Send Message <i
+                        class="fas fa-paper-plane"></i></button>
             </form>
             <div class="mt-10 text-xl text-gray-300 text-center">
                 <p class="mb-4 font-semibold">Find me across the web:</p>
                 <div class="flex justify-center space-x-8 text-4xl">
-                    <a href="mailto:rohitdhanani.dev@example.com" class="text-purple-400 hover:text-purple-300 transition-colors duration-300" aria-label="Email"><i class="fas fa-envelope-square"></i></a>
-                    <a href="https://linkedin.com/in/rohitdhanani" target="_blank" rel="noopener noreferrer" class="text-purple-400 hover:text-purple-300 transition-colors duration-300" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://github.com/rohitdhanani786090" target="_blank" rel="noopener noreferrer" class="text-purple-400 hover:text-purple-300 transition-colors duration-300" aria-label="GitHub"><i class="fab fa-github-square"></i></a>
-                    </div>
+                    <a href="mailto:rohitdhanani.dev@example.com"
+                        class="text-purple-400 hover:text-purple-300 transition-colors duration-300"
+                        aria-label="Email"><i class="fas fa-envelope-square"></i></a>
+                    <a href="https://linkedin.com/in/rohitdhanani" target="_blank" rel="noopener noreferrer"
+                        class="text-purple-400 hover:text-purple-300 transition-colors duration-300"
+                        aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/rohitdhanani786090" target="_blank" rel="noopener noreferrer"
+                        class="text-purple-400 hover:text-purple-300 transition-colors duration-300"
+                        aria-label="GitHub"><i class="fab fa-github-square"></i></a>
+                </div>
             </div>
         </div>
     </section>
     <footer class="bg-gray-900 py-10 text-center text-gray-400 border-t border-gray-700">
         <div class="container mx-auto px-6">
             <p>&copy; <span id="current-year"></span> <b>Rohit Dhanani</b>. All rights reserved.</p>
-            <p class="mt-3 text-sm flex items-center justify-center gap-2">Crafted with <i class="fas fa-heart text-red-500 animate-pulse text-lg"></i> and a passion for <i class="fas fa-code text-blue-400 text-lg"></i> by Rohit.</p>
+            <p class="mt-3 text-sm flex items-center justify-center gap-2">Crafted with <i
+                    class="fas fa-heart text-red-500 animate-pulse text-lg"></i> and a passion for <i
+                    class="fas fa-code text-blue-400 text-lg"></i> by Rohit.</p>
         </div>
     </footer>
 
@@ -529,7 +662,7 @@
         });
 
         // Three.js Particle Background for Hero Section
-        window.onload = function() {
+        window.onload = function () {
             const scene = new THREE.Scene();
             const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
             const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('hero-canvas'), alpha: true, antialias: true });
@@ -602,4 +735,5 @@
         };
     </script>
 </body>
+
 </html>
